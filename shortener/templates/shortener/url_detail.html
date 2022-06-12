@@ -1,0 +1,54 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+	<div class="container">
+		<div class="card mt-5">
+			{% bootstrap_css %}
+			{% bootstrap_javascript %}
+			{% bootstrap_messages %}
+			<div class="card-header text-center py-3">
+				<h3>URL Details</h3>
+			</div>
+            
+            {% if errors %}
+                <div class="alert alert-danger mt-4" role="alert">
+                    <p>{{errors}}</p>
+                </div>
+            {% endif %}
+
+            <div class="row mx-auto text-center mt-0">
+                <p><span class="text-danger">Shortened URL:</span> <a class="link-primary" href="#">{{ url_detail.new_short_url }}</a></p>
+                <p><span class="text-danger">Previous URL:</span> <a class="link-primary" href="#">{{ url_detail.original_url }}</a></p>
+                <p><span>The shortened URL will expire on: </span><strong>{{ url_detail.date_expired }}</strong></p>
+
+                <br><br>
+                <p><strong>More Detail About URL</strong></p>
+                <p><span class="text-danger">URL Life Span: </span> <strong>{{ url_detail.lifespan }} sec</strong></p>
+                <p><span class="text-danger">URL Date Created: </span> <strong>{{ url_detail.date_created }}</strong></p>
+                <p><span class="text-danger">URL Max Uses: </span> <strong>{{ url_detail.usage_count }}</strong></p>
+                <p><span class="text-danger">Created By: </span> <strong>{{ url_detail.created_by }}</strong></p>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <a class="btn btn-info" href="{% url 'shortener:url_list' %}">URL Last</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<div>
+            <div><br><br><br></div>
+        </div>
+
+		
+	</div>
+{% endblock %}

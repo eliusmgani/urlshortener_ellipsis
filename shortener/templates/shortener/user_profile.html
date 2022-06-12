@@ -1,0 +1,111 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load bootstrap5 %}
+
+
+{% block content %}
+    <div class=container>
+        <div class="card-header text-center py-3">
+            <h3 class="text-white">Profile</h3>
+        </div>
+        <div class="row">
+            {% bootstrap_css %}
+            {% bootstrap_javascript %}
+            {% bootstrap_messages %}
+            <div class="col-md-2">
+                <div class="card text-center" >
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-9 text-secondary">
+                                {% if user.profile_pic %}
+                                    <img class="user-img" src="{{user.profile_pic.url}}" heigth="250" width="150">
+                                {% else %}
+                                    <span class="crayons-avatar crayons-avatar--3xl">
+                                        <img src="https://res.cloudinary.com/practicaldev/image/fetch/s--bAM48olN--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/405871/069b6d58-4dca-4d8e-8cc3-30dff8ab8a13.png"
+                                        width="128" height="128" alt={{user.username}} class="crayons-avatar__image">
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">First Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary font-weight-bold">
+                                {{ user.first_name }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Username</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary font-weight-bold">
+                                {{ user.username }}
+                            </div>
+                        </div>
+                        <hr>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Last Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary font-weight-bold">
+                                {{ user.last_name }}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary font-weight-bold">
+                                {{ user.email }}
+                            </div>
+                        </div>
+                        <hr>
+
+                        {% if user.mobile_no %}
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <h6 class="mb-0">MobileNo:</h6>
+                                </div>
+                                <div class="col-sm-9 text-secondary font-weight-bold">
+                                    {{ user.mobile_no }}
+                                </div>
+                            </div>            
+                            <hr>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <a class="btn btn-info" href="{% url 'shortener:edit_profile' %}">Edit Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

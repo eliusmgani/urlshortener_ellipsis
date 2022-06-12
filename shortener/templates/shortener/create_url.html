@@ -1,0 +1,35 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+	<div class="container">
+		<div class="card mt-5">
+			{% bootstrap_css %}
+			{% bootstrap_javascript %}
+			{% bootstrap_messages %}
+			<div class="card-header text-center py-3">
+				<h1>Django URL Shortener</h1>
+			</div>
+			<div class="px-3 py-4">
+				<form action="" method="POST">
+					{% csrf_token %}
+					{% bootstrap_form form %}
+
+					{% buttons %}
+						<button type="submit" class="btn btn-primary align=right">Submit</button>
+					{% endbuttons %}
+				</form>
+			</div>
+		</div>
+		<div>
+            <div><br><br><br></div>
+        </div>
+
+		{% if errors %}
+			<div class="alert alert-danger mt-4" role="alert">
+				<p>{{errors}}</p>
+			</div>
+		{% endif %}
+	</div>
+{% endblock %}

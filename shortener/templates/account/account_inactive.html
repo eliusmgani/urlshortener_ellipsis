@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load bootstrap5 %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Account Inactive" %}{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="card mt-5">
+            {% bootstrap_css %}
+            {% bootstrap_javascript %}
+            {% bootstrap_messages %}
+
+            <div class="card-header text-center py-1">
+                <h3>{% trans "Account Inactive" %}</h3>
+            </div>
+
+            <p>{% trans "This account is inactive." %}</p>
+
+            <div>
+                <div><br><br><br></div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

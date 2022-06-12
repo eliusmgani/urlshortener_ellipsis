@@ -1,0 +1,49 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+	<div class="container">
+		<div class="card mt-5">
+			{% bootstrap_css %}
+			{% bootstrap_javascript %}
+			{% bootstrap_messages %}
+			<div class="card-header text-center py-3">
+				<h3>Delete URL</h3>
+			</div>
+            
+            {% if errors %}
+                <div class="alert alert-danger mt-4" role="alert">
+                    <p>{{errors}}</p>
+                </div>
+            {% endif %}
+
+            {% comment %} <div class="row mx-auto text-center mt-0">
+                {% buttons %}
+                    <a href="{% url 'shortener:url_detail' url.pk %}", class="btn btn-success">View</a>
+                    <a id="DeleteUrl" href="", class="btn btn-danger">Delete</a>
+                {% endbuttons %}
+
+            </div> {% endcomment %}
+        </div>
+
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-body">
+                    <h3>Are you sure you want to delete: <span><a href="#">{{link.original_url}}</a></span>..??</h3>
+                    <form  method="POST" action="{% url 'shortener:delete_url' link.pk %}">
+                        {% csrf_token %}
+
+                        <a class="btn btn-secondary" href="{% url 'shortener:url_list' %}">Cancel</a>
+                        <input type="submit" class="btn btn-danger" value="Confirm">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+		<div>
+            <div><br><br><br></div>
+        </div>
+	</div>
+{% endblock %}

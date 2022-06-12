@@ -1,0 +1,60 @@
+{% load static %}
+{% load i18n %}
+{% load bootstrap5 %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/account/allauth/style.css' %}">
+	  <link type="text/css" rel="stylesheet" href="{% static 'index/css/index.css' %}" />
+    <title>Django Url shortener</title>
+  </head>
+  <body>
+    <header id="home">
+      
+      <!--Navbar-->
+      {% include 'navbar.html' %}
+      <!--navbar-->
+
+
+      <!-- Background Image -->
+      {% comment %} <div class="bg-img" style="background-image: url({% static 'index/img/url_shortener_png.png' %}); height: 550px;">
+        <div class="overlay"></div> {% endcomment %}
+      </div>
+      <!-- /Background Image -->
+
+
+      <br>
+      {% block content %}
+
+      {% endblock content %}
+
+    </header>
+    <!-- Footer -->
+    <div class="row">
+        <footer class="page-footer font-small fixed-bottom" style="background-color: black">
+
+          <!-- Copyright -->
+          <div class="footer-copyright text-center green py-3" style="color: #ffffff">
+            Copyright © <a href="{% url 'shortener:create_url' %}">eliusmgani</a>
+          </div>
+          <!-- Copyright -->
+
+        </footer>
+    </div>
+    <!-- Footer -->
+    
+  </body>
+</html>
