@@ -1,6 +1,6 @@
 {% load static %}
 {% load i18n %}
-{% load bootstrap5 %}
+{% comment %} {% load bootstrap5 %} {% endcomment %}
 
 
 <!DOCTYPE html>
@@ -17,9 +17,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    {% comment %} <link rel="stylesheet" type="text/css" href="{% static '/account/allauth/style.css' %}"> {% endcomment %}
-	  <link type="text/css" rel="stylesheet" href="{% static 'index/css/index.css' %}" />
-    <title>Django Url shortener</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'account/allauth/style.css' %}" >
+	  <link rel="stylesheet" type="text/css" href="{% static 'shortener/css/index.css' %}" >
+    <title>Django Url Shortener</title>
   </head>
   <body>
     <header id="home">
@@ -30,7 +30,7 @@
 
 
       <!-- Background Image -->
-      <div class="bg-img" style="background-image: url({% static 'index/img/url_shortener_png.png' %}); height: 550px;">
+      <div class="bg-img" style="background-image: url('{% static "shortener/img/url_shortener_png.png" %}');">
         <div class="overlay"></div>
       </div>
       <!-- /Background Image -->
